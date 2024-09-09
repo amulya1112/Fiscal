@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiscal Ox</title>
+    <!-- Bootstrap 4 CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- jQuery DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <!-- jQuery DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- First Section: Table -->
+        <h2>Class Information</h2>
+        <table id="classTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Class Name</th>
+                    <th>Location</th>
+                    <th>Student Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mathematics</td>
+                    <td>Room 101</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>History</td>
+                    <td>Room 102</td>
+                    <td>25</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Second Section: Input and Button -->
+        <h2>Create JSON Array</h2>
+        <div class="form-group">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" class="form-control">
+        </div>
+        <button id="createJsonBtn" class="btn btn-primary">Create JSON Array</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable
+            $('#classTable').DataTable();
+
+            // On Click Event for Button
+            $('#createJsonBtn').click(function() {
+                let classList = [];
+                let classObj1 = {
+                    id: 1,
+                    name: 'Mathematics',
+                    location: 'Room 101',
+                    count: 30
+                };
+                let classObj2 = {
+                    id: 2,
+                    name: 'History',
+                    location: 'Room 102',
+                    count: 25
+                };
+                let classObj3 = {
+                    id: 3,
+                    name: 'Science',
+                    location: 'Room 103',
+                    count: 20
+                };
+
+                classList.push(classObj1, classObj2, classObj3);
+
+                console.log(classList);
+            });
+
+            // On Change Event for Input Box
+            $('#studentName').on('input', function() {
+                let inputValue = $(this).val();
+                if (inputValue && inputValue[0] !== inputValue[0].toUpperCase()) {
+                    $(this).val(inputValue.charAt(0).toUpperCase() + inputValue.slice(1));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
